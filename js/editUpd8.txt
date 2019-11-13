@@ -54,10 +54,10 @@ function onLoad(){
 				document.getElementById('file').innerHTML = x.filepath.substring(x.filepath.lastIndexOf('/') + 1) + "<b id='removeImg' onclick='removeFile()'> x</b>";
 			}
 			
-			updateDocs.innerHTML = readFile(x.path);
+			updateDocs.innerHTML = readFile(src + x.path);
 		}
 	});
-	
+
 }
 
 function exec(cmd){
@@ -151,12 +151,11 @@ function updateModule(){
 							}
 							
 							//update your text file
-							var txtpath = x.path.substring(filePathIndex(x.path),x.path.length).replaceAll("%20"," "),
-								txtEdit = fso.OpenTextFile(txtpath,2);
+							var txtpath = (src.substring(filePathIndex(src),src.lastIndexOf("/")) + x.path).replaceAll("%20"," ");
+							var	txtEdit = fso.OpenTextFile(txtpath,2);
 								txtEdit.writeLine(updateDocs.innerHTML);
 								txtEdit.close();
 							
-							txtName = txtpath.substring(txtpath.indexOf('docs/')+4);
 								
 							//update the JSON file
 							data.forEach(function(k){
@@ -174,10 +173,8 @@ function updateModule(){
 								jsonWrite = fso.OpenTextFile(jsonPath, 2);
 								jsonWrite.WriteLine(JSON.stringify(data));
 								jsonWrite.Close();		
-											
 						}
 					});
-					
 					
 					alert("Module has been updated!");
 					window.close();

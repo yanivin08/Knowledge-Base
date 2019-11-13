@@ -109,7 +109,7 @@ function viewSearch(arr){
 			return 0;
 		});
 		arrs.forEach(function(x){
-			path = x.path.substring(filePathIndex(x.path),x.path.length).replaceAll("%20"," ");
+			path = (src.substring(filePathIndex(src)) + x.path).replaceAll("%20"," ");
 			filePath = fso.OpenTextFile(path,1);
 			text = filePath.ReadAll();
 			if(x.module == "training"){
@@ -132,7 +132,7 @@ function viewSearch(arr){
 
 /*viwer of the chosen updates base on the list of topics*/
 //calls when user pick updates base on the results
-function viewerUpdates(path,img,title,category,file,dte,nme,module){
+function viewerUpdates(xpath,img,title,category,file,dte,nme,module){
 	hideElem();
 	
 	var viewDiv = document.getElementById('searchViewer'),
@@ -151,7 +151,7 @@ function viewerUpdates(path,img,title,category,file,dte,nme,module){
 		titleMain.innerText = title.toUpperCase();
 		titleHead.innerText = category.toUpperCase();
 	
-		txtpath = path.substring(filePathIndex(path),path.length).replaceAll("%20"," ");
+		txtpath = (src.substring(filePathIndex(src)) + xpath).replaceAll("%20"," ");
 		
 		viewDiv.style.display = "block";
 		viewDiv.style.opacity = "1";
@@ -353,8 +353,7 @@ function getLatestUpdates(){
 		for(var i=0;i<latestArr.length;i++){
 			var newTitle = latestArr[i].title.toUpperCase(),
 				slideNumber = i + 1;
-			var newPath = latestArr[i].path.substring(filePathIndex(latestArr[i].path),latestArr[i].path.length).replaceAll("%20"," ");
-			
+			var newPath = (src.substring(filePathIndex(src)) + latestArr[i].path).replaceAll("%20"," ");
 			var	readFile = fso.OpenTextFile(newPath,1),
 				newContent = readFile.ReadAll().substring(0,200);
 				readFile.Close();

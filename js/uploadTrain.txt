@@ -109,7 +109,7 @@ function uploadModule(){
 						newContent.category = trainCategory.value;
 						newContent.module = "training";
 						newContent.date = trainMonth.value + " " + trainDay.value + ", " + trainYear.value;
-						newContent.path = (src.substring(0,path.lastIndexOf("/")) + "/training/" + trainCategory.value + txtName).replaceAll(" ","%20");
+						newContent.path = ("/training/" + trainCategory.value + txtName).replaceAll(" ","%20");
 						newContent.imgpath = "img/main/default.png";
 						newContent.filepath = "none";
 						newContent.empid = trainEmp.value;

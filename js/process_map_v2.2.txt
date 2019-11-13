@@ -362,7 +362,6 @@ function changeText(e){
 	
 	shapes.map(function(i){
 		if(i.active){
-			console.log(i);
 			i.text = e.value;
 		}
 	})

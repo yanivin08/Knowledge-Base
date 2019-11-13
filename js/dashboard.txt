@@ -26,7 +26,6 @@ function createGraph(visitData){
 		//scale and translate the canvas to get the specific x,y coordinate
 		ctx.scale(1,-1);
 		ctx.translate(canvas.width*.10,-(canvas.height-(canvas.height*.15)));
-		console.log(visitData[0]);
 		var xValue = visitData.map(function(x){ return x.date;}); //get the label
 		var yValue = visitData.map(function(x){ return x.visit;}); //get the xvalue
 		
@@ -143,7 +142,6 @@ function drawLabelY(arr){
 		dis = yThreshold,
 		stY = 0;
 	
-		//console.log(max);
 	ctx.save();
 	ctx.scale(1,-1); 
 	ctx.fillStyle = "gray";
@@ -249,7 +247,6 @@ function getMonth(){
              adLockReadOnly,  
              adCmdText);
 			 
-	console.log(monthArray['January']);
 	if(!adRecs.EOF){
 		while (!adRecs.EOF){
 			selectContent += "<option value='" + monthArray[adRecs("visitMonth").value] + "'>" + adRecs("visitMonth").value + "</option>"
@@ -291,7 +288,6 @@ function getVisitData(monthNum){
 			arraysH.push(temp);
 			adRecs.MoveNext();  
 		}
-		console.log(arraysH);
 		return arraysH;
 	}else{
 		return 0;

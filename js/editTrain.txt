@@ -45,7 +45,7 @@ function onLoad(){
 			
 			showproMap()
 	
-			txtPath = x.path.substring(0,x.path.lastIndexOf("."))
+			txtPath = src + x.path.substring(0,x.path.lastIndexOf("."))
 			
 			document.getElementById('shapeHolder').innerHTML = readFile(txtPath + ".tx");
 			
@@ -105,7 +105,7 @@ function editTraining(){
 		if(id == trainEmp.value){
 			if(approveId.indexOf(id) != -1){
 				if(shapes.length > 0){
-					console.log('yow');
+					
 					data.map(function(x){
 						if(x.title == editTxt.title && x.date == editTxt.date && x.category == editTxt.category && x.module == editTxt.module){
 							
@@ -142,7 +142,7 @@ function editTraining(){
 							
 							var textContent = JSON.stringify(processArray);
 							
-							var txtMain = x.path.substring(filePathIndex(x.path),x.path.length).replaceAll("%20"," "),
+							var txtMain = (src.substring(filePathIndex(src)) + x.path).replaceAll("%20"," "),
 								txtArray = txtMain.substring(0,txtMain.indexOf('.')) + ".ta",
 								txtShapes = txtMain.substring(0,txtMain.indexOf('.')) + ".ts",
 								txtLines = txtMain.substring(0,txtMain.indexOf('.')) + ".tl",

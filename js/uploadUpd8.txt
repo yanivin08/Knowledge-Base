@@ -133,7 +133,7 @@ function uploadModule(){
 						newContent.category = updateCategory.value;
 						newContent.module = "updates";
 						newContent.date = updateMonth.value + " " + updateDay.value + ", " + updateYear.value;
-						newContent.path = (src.substring(0,path.lastIndexOf("/")) + "/updates/" + updateMonth.value + "_" + updateDay.value + "_" + updateYear.value + txtName).replaceAll(" ","%20");
+						newContent.path = ("/updates/" + updateMonth.value + "_" + updateDay.value + "_" + updateYear.value + txtName).replaceAll(" ","%20");
 						newContent.imgpath = uploadedImg;
 						newContent.filepath = uploadedFile;
 						newContent.empid = updateEmp.value;

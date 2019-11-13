@@ -50,7 +50,7 @@ function getUpdates(){
 	}
 }
 
-function viewUpdates(path,img,title,file,category,dte,nme){
+function viewUpdates(xpath,img,title,file,category,dte,nme){
 
 	var div = document.getElementById('updateDivContent'),
 		titleView = document.getElementById('updateDivTitle').getElementsByTagName('h1')[0];
@@ -63,7 +63,7 @@ function viewUpdates(path,img,title,file,category,dte,nme){
 	
 	pView.innerHTML = ""
 	
-	updateContent = readFile(path);
+	updateContent = readFile(src + xpath);
 	
 	titleView.innerText = title;
 	imgView.src = "../" + img;
@@ -87,7 +87,6 @@ function readFile(p){
 		filePath = fso.OpenTextFile(path,1),
 		content = filePath.ReadAll();
 		filePath.Close();
-		//console.log(content);
 		return content;
 }
 

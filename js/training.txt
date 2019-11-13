@@ -70,7 +70,7 @@ function goback(){
 }
 
 /*show content of the selected module*/
-function viewUpdates(ctgry,title,path,img,file,dte,nme){
+function viewUpdates(ctgry,title,xpath,img,file,dte,nme){
 	var head = document.getElementById('viewerHeader'),
 		trainHeader = head.getElementsByTagName('p')[0],
 		trainTitle = head.getElementsByTagName('h1')[0],
@@ -87,9 +87,8 @@ function viewUpdates(ctgry,title,path,img,file,dte,nme){
 	trainTitle.innerText = title.toUpperCase();
 	currInd = 0;
 	steps = 0;
-	counterModules(path,title,ctgry);
-	
-	processMap = JSON.parse(readFile(path));
+	counterModules(xpath,title,ctgry);
+	processMap = JSON.parse(readFile(src + xpath));
 		
 }
 
