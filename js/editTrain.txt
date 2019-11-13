@@ -10,7 +10,8 @@ var category = document.getElementById('categoryList'),
 	trainYear = document.getElementById('trainYear').getElementsByTagName('select')[0],
 	err = document.getElementById('errorMsg'),
 	msg = document.getElementById('msgBx').getElementsByTagName('span')[0],
-	fsObj = new ActiveXObject("Scripting.FileSystemObject");
+	fsObj = new ActiveXObject("Scripting.FileSystemObject"),
+	chart, tools;
 	
 var svgView = false;
 var processArray = [], editTxt, oldArray = [];
@@ -69,6 +70,8 @@ function onLoad(){
 			
 			svgChart.removeChild(svgChart.lastChild);
 			svgChart.innerHTML += txtElement;
+			
+			chart.g = document.getElementById("Workspace");
 			
 			var svgTools = document.getElementById('svgTools');
 			
@@ -236,8 +239,8 @@ function viewSVG(){
 		var svgTools = document.querySelector('#svgTools'),
 			svgChart = document.querySelector('#svgChart');
 			
-		var tools = new SVG(svgTools,'Tools'),
-			chart = new SVG(svgChart,'Workspace');
+		tools = new SVG(svgTools,'Tools'),
+		chart = new SVG(svgChart,'Workspace');
 				
 		tools.showTools();
 
